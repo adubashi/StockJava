@@ -1,0 +1,72 @@
+import java.io.*;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.*;
+
+
+public class stockCSV {
+	Hashtable<String, Integer> numbers
+    = new Hashtable<String, Integer>();
+	public static void main(String[] args) {
+			String symbol = "AAPL";
+			String tagList = "c8g3a0b2a5a2b0b3b6b4c1c0m7m5k4j5p2k2c6c3c4h0g0m0";
+			try { 
+			
+			// Retrieve CSV File
+			URL yahoo = new URL("http://finance.yahoo.com/d/quotes.csv?s="+ symbol + "&f=l1vr2ejkghm3j3");
+			URLConnection connection = yahoo.openConnection(); 
+			InputStreamReader is = new InputStreamReader(connection.getInputStream());
+			BufferedReader br = new BufferedReader(is);  
+			
+			
+
+			
+			// Parse CSV Into Array
+			String line = br.readLine(); 
+			String[] stockinfo = line.split(","); 
+			
+			System.out.println(Arrays.toString(stockinfo));
+			
+			
+			
+		} catch (IOException e) {
+			Logger log = Logger.getLogger(stockCSV.class.getName()); 
+			log.log(Level.SEVERE, e.toString(), e);
+			
+		}
+
+	}
+	
+	private static String getStringFromInputStream(InputStream is) {
+		 
+		BufferedReader br = null;
+		StringBuilder sb = new StringBuilder();
+ 
+		String line;
+		try {
+ 
+			br = new BufferedReader(new InputStreamReader(is));
+			while ((line = br.readLine()) != null) {
+				sb.append(line);
+			}
+ 
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (br != null) {
+				try {
+					br.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+ 
+		return sb.toString();
+ 
+	}
+
+}

@@ -1,0 +1,39 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+
+
+public class stockCSV {
+
+	public static void main(String[] args) {
+			String symbol = "AAPL";
+			try { 
+			
+			// Retrieve CSV File
+			URL yahoo = new URL("http://finance.yahoo.com/d/quotes.csv?s="+ symbol + "&f=l1vr2ejkghm3j3");
+			URLConnection connection = yahoo.openConnection(); 
+			InputStreamReader is = new InputStreamReader(connection.getInputStream());
+			BufferedReader br = new BufferedReader(is);  
+			
+			// Parse CSV Into Array
+			String line = br.readLine(); 
+			String[] stockinfo = line.split(","); 
+			
+			System.out.println(stockInfo);
+			
+			
+			
+		} catch (IOException e) {
+			Logger log = Logger.getLogger(stockCSV.class.getName()); 
+			log.log(Level.SEVERE, e.toString(), e);
+			
+		}
+
+	}
+
+}

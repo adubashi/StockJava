@@ -1,0 +1,184 @@
+import java.io.*;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.*;
+
+
+public class stockCSV {
+	public static Hashtable<String, String> tags
+    = new Hashtable<String, String>();
+	public static void main(String[] args) {
+		
+			tags.put("AfterHoursChangeRealtime","c8");
+			tags.put("AnnualizedGain","g3");
+			tags.put("Ask","a0");
+			tags.put("AskRealtime","b2");
+			tags.put("AskSize","a5");
+			tags.put("AverageDailyVolume","a2");
+			tags.put("Bid","b0");
+			tags.put("BidRealtime","b3");
+			tags.put("BidSize","b6");
+			tags.put("BookValuePerShare","b4");
+			tags.put("Change","c1");
+			tags.put("Change_ChangeInPercent","c0");
+			tags.put("ChangeFromFiftydayMovingAverage","m7");
+			
+			tags.put("ChangeFromTwoHundreddayMovingAverage","m5");
+			tags.put("ChangeFromYearHigh","k4");
+			tags.put("ChangeFromYearLow","j5");
+			tags.put("ChangeInPercent","p2");
+			tags.put("ChangeInPercentRealtime","k2");
+			tags.put("ChangeRealtime","c6");
+			tags.put("Commission","c3");
+			tags.put("Currency","c4");
+			tags.put("DaysHigh","h0");
+			tags.put("DaysLow","g0");
+			tags.put("DaysRange","m0");
+			tags.put("DaysRangeRealtime","m2");
+			tags.put("DaysValueChange","w1");
+			tags.put("DaysValueChangeRealtime","w4");
+			
+			tags.put("DividendPayDate","r1");
+			tags.put("TrailingAnnualDividendYield","d0");
+			tags.put("TrailingAnnualDividendYieldInPercent","y0");
+			tags.put("DilutedEPS","e0");
+			tags.put("EBITDA","j4");
+			tags.put("EPSEstimateCurrentYear","e7");
+			tags.put("EPSEstimateNextQuarter","e9");
+			tags.put("EPSEstimateNextYear","e8");
+			tags.put("ExDividendDate","q0");
+			tags.put("FiftydayMovingAverage","m3");
+			tags.put("SharesFloat","f6");
+			tags.put("HighLimit","l2");
+			tags.put("HoldingsGain","g4");
+			
+			
+			tags.put("HoldingsGainPercent","g1");
+			tags.put("HoldingsGainPercentRealtime","g5");
+			tags.put("HoldingsGainRealtime","g6");
+			tags.put("HoldingsValue","v1");
+			tags.put("HoldingsValueRealtime","v7");
+			tags.put("LastTradeDate","d1");
+			tags.put("LastTradePriceOnly","l1");
+			tags.put("LastTradeRealtimeWithTime","k1");
+			tags.put("LastTradeSize","k3");
+			tags.put("LastTradeTime","t1");
+			tags.put("LastTradeWithTime","l0");
+			tags.put("LowLimit","l3");
+			
+			tags.put("MarketCapitalization","j1");
+			tags.put("MarketCapRealtime","j3");
+			tags.put("MoreInfo","i0");
+			tags.put("Name","n0");
+			tags.put("Notes","n4");
+			tags.put("OneyrTargetPrice","t8");
+			tags.put("Open","o0");
+			tags.put("OrderBookRealtime","i5");
+			tags.put("PEGRatio","r5");
+			tags.put("PERatio","r0");
+			tags.put("PERatioRealtime","r2");
+			tags.put("PercentChangeFromFiftydayMovingAverage","m8");
+			
+			tags.put("PercentChangeFromTwoHundreddayMovingAverage","m6");
+			tags.put("ChangeInPercentFromYearHigh","k5");
+			tags.put("PercentChangeFromYearLow","j6");
+			tags.put("PreviousClose","p0");
+			tags.put("PriceBook","p6");
+			tags.put("PriceEPSEstimateCurrentYear","r6");
+			tags.put("PriceEPSEstimateNextYear","r7");
+			tags.put("PricePaid","p1");
+			tags.put("PriceSales","p5");
+			tags.put("Revenue","s6");
+			tags.put("SharesOwned","s1");
+			
+			tags.put("SharesOutstanding","j2");
+			tags.put("ShortRatio","s7");
+			tags.put("StockExchange","x0");
+			tags.put("Symbol","s0");
+			tags.put("TickerTrend","t7");
+			tags.put("TradeDate","d2");
+			tags.put("TradeLinks","t6");
+			tags.put("TradeLinksAdditional","f0");
+			tags.put("TwoHundreddayMovingAverage","m4");
+			tags.put("Volume","v0");
+			
+			tags.put("YearHigh","k0");
+			tags.put("YearLow","j0");
+			tags.put("YearRange","w0");
+		
+			
+		
+		
+		
+			
+		
+		
+		
+		
+		
+			String symbol = "AAPL";
+			ArrayList<String> arr = new ArrayList<String>(tags.values());
+			String tagList = "";
+			for(int i = 0; i < arr.size(); i++){
+				tagList = tagList + arr.get(i);
+			}
+			try { 
+			
+			// Retrieve CSV File
+			URL yahoo = new URL("http://finance.yahoo.com/d/quotes.csv?s="+ symbol + "&f=l1vr2ejkghm3j3");
+			URLConnection connection = yahoo.openConnection(); 
+			InputStreamReader is = new InputStreamReader(connection.getInputStream());
+			BufferedReader br = new BufferedReader(is);  
+			
+			
+
+			
+			// Parse CSV Into Array
+			String line = br.readLine(); 
+			String[] stockinfo = line.split(","); 
+			
+			System.out.println(Arrays.toString(stockinfo));
+			
+			
+			
+		} catch (IOException e) {
+			Logger log = Logger.getLogger(stockCSV.class.getName()); 
+			log.log(Level.SEVERE, e.toString(), e);
+			
+		}
+
+	}
+	
+	private static String getStringFromInputStream(InputStream is) {
+		 
+		BufferedReader br = null;
+		StringBuilder sb = new StringBuilder();
+ 
+		String line;
+		try {
+ 
+			br = new BufferedReader(new InputStreamReader(is));
+			while ((line = br.readLine()) != null) {
+				sb.append(line);
+			}
+ 
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (br != null) {
+				try {
+					br.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+ 
+		return sb.toString();
+ 
+	}
+
+}
