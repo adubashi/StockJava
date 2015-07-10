@@ -1,0 +1,8 @@
+import java.util.LinkedHashMap;
+
+
+public class TagsTable {
+	public static LinkedHashMap<String, String> tags
+    = new LinkedHashMap<String, String>();
+
+}

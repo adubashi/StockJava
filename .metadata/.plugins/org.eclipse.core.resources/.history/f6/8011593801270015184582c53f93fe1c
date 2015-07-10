@@ -1,0 +1,118 @@
+import java.io.*;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.*;
+import org.json.simple.JSONObject;
+
+
+public class stockCSV {
+	
+	public static void main(String[] args) {
+		
+			
+			TagsTable.generateTagTable();
+			System.out.println(TagsTable.tags);
+		
+			
+		
+		
+		
+			
+		
+		
+		
+		
+		
+			String symbol = "AAPL";
+			ArrayList<String> arr = new ArrayList<String>(TagsTable.tags.values());
+			String tagList = "";
+			for(int i = 0; i < arr.size(); i++){
+				tagList = tagList + arr.get(i);
+			}
+			System.out.println(tagList);
+			
+			
+			ArrayList<String> arr2 = new ArrayList<String>(TagsTable.tags.keySet());
+			String keyList = "";
+			for(int i = 0; i < arr.size(); i++){
+				keyList = keyList + arr.get(i);
+			}
+			System.out.println(keyList);
+			try { 
+			
+			// Retrieve CSV File
+			String URL = "http://finance.yahoo.com/d/quotes.csv?s="+ symbol + "&f=" + tagList;
+			URL yahoo = new URL(URL);
+			URLConnection connection = yahoo.openConnection(); 
+			
+			InputStreamReader is = new InputStreamReader(connection.getInputStream());
+			BufferedReader br = new BufferedReader(is);  
+			System.out.println("Connection closed");
+			
+
+			
+			// Parse CSV Into Array
+			
+			String line = br.readLine(); 
+			String[] stockinfo = line.split(","); 
+			
+			System.out.println(Arrays.toString(stockinfo));
+			
+			LinkedHashMap linked = new LinkedHashMap();
+			
+			JSONObject stock = new JSONObject();
+
+			
+			for(int i = 0; i< TagsTable.tags.size() ; i++ ){
+				System.out.println(arr2.get(i) + " " + stockinfo[i] );
+				linked.put(arr2.get(i), stockinfo[i]);
+				stock.put(arr2.get(i), stockinfo[i]);
+			}
+			
+			System.out.print(stock);
+			
+			
+			
+			
+			
+			
+		} catch (IOException e) {
+			Logger log = Logger.getLogger(stockCSV.class.getName()); 
+			log.log(Level.SEVERE, e.toString(), e);
+			
+		}
+
+	}
+	
+	private static String getStringFromInputStream(InputStream is) {
+		BufferedReader br = null;
+		StringBuilder sb = new StringBuilder();
+ 
+		String line;
+		try {
+ 
+			br = new BufferedReader(new InputStreamReader(is));
+			while ((line = br.readLine()) != null) {
+				sb.append(line);
+			}
+ 
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (br != null) {
+				try {
+					br.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+ 
+		return sb.toString();
+ 
+	}
+
+}

@@ -1,18 +1,16 @@
-INDEX VERSION 1.127+C:\Users\aduba_000\StockJava\.metadata\.plugins\org.eclipse.jdt.core
-1144188029.index
-3015671029.index
-4149142647.index
-2706502329.index
-3229056317.index
-3521617142.index
-3256372620.index
-739078005.index
-1075156909.index
-683184654.index
-3626931047.index
-1820024274.index
-2708239607.index
-728132027.index
-3780448108.index
-4018706093.index
-384216248.index
+INDEX VERSION 1.126+/home/adubashi/StockJava/.metadata/.plugins/org.eclipse.jdt.core
+2598035366.index
+3708371878.index
+664741535.index
+1159935248.index
+460152253.index
+2410964690.index
+392775124.index
+3542660237.index
+1513993030.index
+3938652823.index
+3900037835.index
+2307328643.index
+1259291233.index
+2426646370.index
+989528713.index
