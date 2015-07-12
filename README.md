@@ -1,5 +1,5 @@
 # StockJava
-Stock.Java 
+# Stock.Java 
 
 Description: A Stock Class for Java. Uses the Yahoo Finance API
 --------------------------------------------------------------------------------
