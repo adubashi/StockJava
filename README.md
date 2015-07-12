@@ -29,7 +29,7 @@ Test File:
 
 ----------------------------------------------------------------------------------
 
-As you can see from the above file, simple enter in a ticker for an equity and 
+As you can see from the above file, simply enter in a ticker for an equity and 
 you're good to go.  The Data can be accessed in JSON or in a LinkedHashMap<String, String>
 
 One call to the Stock Object generates the JSON: AAPL.getStockJSON();
