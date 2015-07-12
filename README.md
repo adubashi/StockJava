@@ -36,7 +36,9 @@ One call to the Stock Object generates the JSON: AAPL.getStockJSON();
 One call to the Stock Object generates the LinkedHashMap: AAPL.generateStockLinkedHashMap();
 
 Then those structures can be accessed easily using: 
+
 JSONObject apple = AAPL.getStockJSON();
+
 LinkedHashMap<String, String> hash = AAPL.getStockLinkedHashMap();	
 
 
