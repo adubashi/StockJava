@@ -42,3 +42,8 @@ JSONObject apple = AAPL.getStockJSON();
 LinkedHashMap<String, String> hash = AAPL.getStockLinkedHashMap();	
 
 
+#Dependencies 
+JSON simple: https://code.google.com/p/json-simple/
+
+Download the jar file and include it in your build path. 
+
